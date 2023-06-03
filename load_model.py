@@ -1,6 +1,7 @@
 import click
 import torch
-from peft import PeftModel    
+
+from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 @click.command()
@@ -11,10 +12,14 @@ def main(model_name, adapters_name):
     This script loads a pre-trained Hugging Face model with a specified adapter into memory.
     """
     try:
-        load_and_prepare_model(model_name, adapters_name)
+        model, tokenizer, stop_token_ids = load_and_prepare_model(model_name, adapters_name)
         print(f"Successfully loaded the model {model_name} into memory")
     except Exception as e:
         print(f"Failed to load the model. Error: {str(e)}")
+
+        return model, tokenizer, stop_token_ids
+
+    
 
 
 def load_and_prepare_model(model_name, adapters_name):
@@ -46,6 +51,8 @@ def load_and_prepare_model(model_name, adapters_name):
 
     # Define the stop token ids for the tokenizer
     stop_token_ids = [0]
+
+    return model, tokenizer, stop_token_ids
 
 
 if __name__ == "__main__":
