@@ -94,7 +94,7 @@ def bot(
     top_k: int, 
     repetition_penalty: float,
     conversation_id: str
-) -> Generator[list, None, None]:
+) -> : Generator[list, None, None]:
     print(f"history: {history}")
     # Initialize a StopOnTokens object
     stop = StopOnTokens()

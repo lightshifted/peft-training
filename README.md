@@ -1,13 +1,32 @@
 # Parameter-Efficient Fine-Tuning or “PEFT”
 
 Created time: June 2, 2023 7:34 PM
-Last edited time: June 2, 2023 8:40 PM
+Last edited time: June 4, 2023 6:40 PM
 Owner: Jason Wheeler
 Tags: Compute, LLMs, Memory, Training
 
-## Setting up BitsandBytes in LamdaLabs SSH
+## 🚀 Setting the Stage
 
-I execute this command from the root of the `peft-training` directory:
+To kick things off, we need to clone the peft-training repository:
+
+```bash
+git clone https://github.com/lightshifted/peft-training
+```
+
+I execute this command to install project dependencies:
+
+```markdown
+cd peft-training
+pip install -r requirements.txt
+```
+
+## 🎛 Configuring BitsandBytes in LambdaLabs SSH
+
+When first attempting to run BitsandBytes in a new LambdaLabs environment, you will likely encounter this issue:
+
+[https://github.com/TimDettmers/bitsandbytes/issues/156](https://github.com/TimDettmers/bitsandbytes/issues/156)
+
+As a solution, I copy `libbitsandbytes_cuda117.so` to `libbitsandbytes_cpu.so` by executing this command:
 
 ```bash
 cd /home/ubuntu/.local/lib/python3.8/site-packages/bitsandbytes/
@@ -20,9 +39,9 @@ To verify whether CUDA libraries exist in the ssh, I execute this command from t
 find / -name libcudart.so 2>/dev/null
 ```
 
-Found at `/usr/lib/x86_64-linux-gnu/libcudart.so`! 🔥
+I've discovered CUDA libraries at `/usr/lib/x86_64-linux-gnu/libcudart.so`! 🔥
 
-I next set `LD_LIBRARY_PATH` to the CUDA libraries path; this gives the shared run-time library loader the CUDA directory to search for:
+Next, I'll guide LD_LIBRARY_PATH towards the path of the CUDA libraries. This step tells the shared run-time library loader where to find the CUDA directory:
 
 ```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/libcudart.so
@@ -37,6 +56,7 @@ source ~/.bashrc
 I then try running the command again 🤞🏽
 
 ```bash
+cd ~/peft-training
 python -m bitsandbytes
 ```
 
@@ -89,3 +109,27 @@ WARNING: Please be sure to sanitize sensible info from any such env vars!
 SUCCESS!
 Installation was successful!
 ```
+
+## Engaging in Conversations with the Fine-Tuned Model
+
+To ensure smooth compatability with asynchronous operations, I upgrade `fsspec`:
+
+```bash
+pip install --upgrade fsspec
+```
+
+If you're eager to experiment with the fine-tuned PEFT weights, initialize Gradio using this command:
+
+```bash
+~/peft-training$ python interface --model-name {model} --adapters-name {adapter}
+```
+
+Where `model` is the name of the model to load, and `adapter` is the name of the adapter to load. The defaults are `decapoda-research/llama-7b-hf` and `timdettmers/guanaco-7b` , respectively.
+
+## 📚 Useful Resources
+
+The following libraries, which are referenced throughout this document, can be useful for further exploration 🐱‍👤:
+
+https://github.com/TimDettmers/bitsandbytes
+
+https://github.com/huggingface/peft
