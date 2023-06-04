@@ -121,7 +121,7 @@ pip install --upgrade fsspec
 If you're eager to experiment with the fine-tuned PEFT weights, initialize Gradio using this command from `peft-training` root directory:
 
 ```bash
-python interface --model-name {model} --adapters-name {adapter}
+python interface.py --model-name {model} --adapters-name {adapter}
 ```
 
 Where `model` is the name of the model to load, and `adapter` is the name of the adapter to load. The defaults are `decapoda-research/llama-7b-hf` and `timdettmers/guanaco-7b` , respectively.
