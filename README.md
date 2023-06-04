@@ -41,7 +41,7 @@ find / -name libcudart.so 2>/dev/null
 
 I've discovered CUDA libraries at `/usr/lib/x86_64-linux-gnu/libcudart.so`! 🔥
 
-Next, I'll guide LD_LIBRARY_PATH towards the path of the CUDA libraries. This step tells the shared run-time library loader where to find the CUDA directory:
+Next, I'll guide `LD_LIBRARY_PATH` towards the path of the CUDA libraries. This step tells the shared run-time library loader where to find the CUDA directory:
 
 ```bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/libcudart.so
@@ -118,10 +118,10 @@ To ensure smooth compatability with asynchronous operations, I upgrade `fsspec`:
 pip install --upgrade fsspec
 ```
 
-If you're eager to experiment with the fine-tuned PEFT weights, initialize Gradio using this command:
+If you're eager to experiment with the fine-tuned PEFT weights, initialize Gradio using this command from `peft-training` root directory:
 
 ```bash
-~/peft-training$ python interface --model-name {model} --adapters-name {adapter}
+python interface --model-name {model} --adapters-name {adapter}
 ```
 
 Where `model` is the name of the model to load, and `adapter` is the name of the adapter to load. The defaults are `decapoda-research/llama-7b-hf` and `timdettmers/guanaco-7b` , respectively.
