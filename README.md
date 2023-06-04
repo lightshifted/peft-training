@@ -1,8 +1,8 @@
 # Parameter-Efficient Fine-Tuning or “PEFT”
 
-Created time: June 2, 2023 7:34 PM
-Last edited time: June 4, 2023 6:40 PM
-Owner: Jason Wheeler
+Created time: June 2, 2023 7:34 PM <br>
+Last edited time: June 4, 2023 6:40 PM <br>
+Owner: Jason Wheeler <br>
 Tags: Compute, LLMs, Memory, Training
 
 ## 🚀 Setting the Stage
