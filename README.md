@@ -28,7 +28,7 @@ Estimated time to complete: 5 mins
 1. Click the link: https://cloud.lambdalabs.com/instances
 2. You'll be asked to sign in to your Lambda account (if you haven't done so already).
 3. Once on the GPU instance page, click the purple button "Launch instance" in the top right.
-4. Verify a payment method if you haven't done so already. IMPORTANT: if you have followed the instructions in the previous section, you will have received $110 in GPU credits. Exceeding 100 hours of 1x A100 usage may incur charges on your credit card. Contact the Lambda team on Discord if you have issues authenticating your payment method (see [Communications and Problems](#communication-and-problems))
+4. Verify a payment method if you haven't done so already.
 5. Launching an instance:
    1. In "Instance type", select the instance type "1x A100 (40 GB SXM4)"
    2. In "Select region", select the region with availability closest to you.
