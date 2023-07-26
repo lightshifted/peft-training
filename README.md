@@ -123,7 +123,7 @@ source ~/.bashrc
 I then try running the command again 🤞🏽
 
 ```bash
-cd ~/peft-training
+cd ~
 python -m bitsandbytes
 ```
 
